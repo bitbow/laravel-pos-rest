@@ -72,7 +72,7 @@ class CartController extends Controller
         return response([
             'success' => true
         ]);
-    }
+    }    
 
     public function delete(Request $request)
     {

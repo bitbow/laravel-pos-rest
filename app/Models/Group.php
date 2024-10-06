@@ -5,17 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
-class Product extends Model
+class Group extends Model
 {
     protected $fillable = [
         'name',
-        'description',
-        'group',
         'image',
-        'barcode',
-        'price',
-        'quantity',
-        'status'
+        'status'        
     ];
 
     protected $casts = [
@@ -29,4 +24,5 @@ class Product extends Model
         }
         return asset('images/img-placeholder.jpg');
     }
+
 }

@@ -12,7 +12,7 @@ For system requirements you [Check Laravel Requirement](https://laravel.com/docs
 
 ### Clone the repository from github.
 
-    git clone https://github.com/angkosal/laravel-pos.git [YourDirectoryName]
+    git clone https://github.com/bitbow/laravel-pos-rest.git [YourDirectoryName]
 
 The command installs the project in a directory named `YourDirectoryName`. You can choose a different
 directory name if you want.
@@ -39,34 +39,31 @@ Rename or copy `.env.example` file to `.env` 1.`php artisan key:generate` to gen
 ### Install Node Dependencies
 
 1. `npm install` to install node dependencies
-1. `npm run dev` for development or `npm run build` for production
+1. `npm run dev` for development or `npm run build` for production (`npm run build` rebuild Point of sale front in React `resources/js/components/Cart.jsx`) 
 
 ### Create storage link
 
-`php artisan storage:link`
+`php artisan storage:link` for enable storeage images
 
 ### Run Server
 
-1. `php artisan serve` or Laravel Homestead
-1. Visit `localhost:8000` in your browser. Email: `admin@gmail.com`, Password: `admin123`.
- <!-- 1. Online demo: [pos.khmernokor.com](https://pos.khmernokor.com/) -->
+1. `php artisan serve` or Laravel Homestead or `php artisan serve --host 192.168.100.66 --port 8080` for LAN browser
+1. Visit `localhost:8000` in your browser. Email: `admin@gmail.com+`, Password: `admin123`.
 
 ### Screenshots
 
 #### Product list
 
-![Product list](https://raw.githubusercontent.com/angkosal/laravel-pos/master/screenshots/products_list.png)
+![Product list](https://raw.githubusercontent.com/bitbow/laravel-pos-rest/master/screenshots/products_list.png)
 
 #### Create order
 
-![Create order](https://raw.githubusercontent.com/angkosal/laravel-pos/master/screenshots/pos.png)
+![Create order](https://raw.githubusercontent.com/bitbow/laravel-pos-rest/master/screenshots/pos.png)
 
 #### Order list
 
-![Order list](https://raw.githubusercontent.com/angkosal/laravel-pos/master/screenshots/order_list.png)
+![Order list](https://raw.githubusercontent.com/bitbow/laravel-pos-rest/master/screenshots/order_list.png)
 
 #### Customer list
 
-![Customer list](https://raw.githubusercontent.com/angkosal/laravel-pos/master/screenshots/customer_list.png)
-
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/angkosal)
+![Customer list](https://raw.githubusercontent.com/bitbow/laravel-pos-rest/master/screenshots/customer_list.png)

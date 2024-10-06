@@ -35,6 +35,12 @@
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
+                    <a href="{{ route('groups.index') }}" class="nav-link {{ activeSegment('groups') }}">
+                        <i class="nav-icon fas fa-th-large"></i>
+                        <p>{{ __('group.title') }}</p>
+                    </a>
+                </li>                
+                <li class="nav-item has-treeview">
                     <a href="{{ route('cart.index') }}" class="nav-link {{ activeSegment('cart') }}">
                         <i class="nav-icon fas fa-cart-plus"></i>
                         <p>{{ __('cart.title') }}</p>

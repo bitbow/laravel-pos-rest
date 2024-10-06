@@ -33,6 +33,7 @@ return [
     'Create_Product'    => 'Crear Producto',
     'Name'              => 'Nombre',
     'Description'       => 'Descripción',
+    'Group'             => 'Grupo',
     'Image'             => 'Imagen',
     'Choose_file'       => 'Elegir archivo',
     'Barcode'           => 'Código de barras',

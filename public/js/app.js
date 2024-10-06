@@ -69474,6 +69474,7 @@ var Cart = /*#__PURE__*/function (_Component) {
     _this.state = {
       cart: [],
       products: [],
+      groups: [],
       customers: [],
       barcode: "",
       search: "",
@@ -69485,6 +69486,7 @@ var Cart = /*#__PURE__*/function (_Component) {
     _this.handleChangeQty = _this.handleChangeQty.bind(_assertThisInitialized(_this));
     _this.handleEmptyCart = _this.handleEmptyCart.bind(_assertThisInitialized(_this));
     _this.loadProducts = _this.loadProducts.bind(_assertThisInitialized(_this));
+    _this.loadGroups = _this.loadGroups.bind(_assertThisInitialized(_this));
     _this.handleChangeSearch = _this.handleChangeSearch.bind(_assertThisInitialized(_this));
     _this.handleSeach = _this.handleSeach.bind(_assertThisInitialized(_this));
     _this.setCustomerId = _this.setCustomerId.bind(_assertThisInitialized(_this));
@@ -69498,6 +69500,7 @@ var Cart = /*#__PURE__*/function (_Component) {
       // load user cart
       this.loadCart();
       this.loadProducts();
+      this.loadGroups();
       this.loadCustomers();
     }
   }, {
@@ -69525,6 +69528,21 @@ var Cart = /*#__PURE__*/function (_Component) {
 
         _this3.setState({
           products: products
+        });
+      });
+    }
+  }, {
+    key: "loadGroups",
+    value: function loadGroups() {
+      var _this3 = this;
+
+      var search = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+      var query = !!search ? "?search=".concat(search) : "";
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/admin/groups".concat(query)).then(function (res) {
+        var groups = res.data.data;
+
+        _this3.setState({
+          groups: groups
         });
       });
     }
