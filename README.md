@@ -53,6 +53,10 @@ Rename or copy `.env.example` file to `.env` 1.`php artisan key:generate` to gen
 
 ### Screenshots
 
+#### Group list
+
+![Product list](https://raw.githubusercontent.com/bitbow/laravel-pos-rest/master/screenshots/group_list.png)
+
 #### Product list
 
 ![Product list](https://raw.githubusercontent.com/bitbow/laravel-pos-rest/master/screenshots/products_list.png)
@@ -63,7 +67,7 @@ Rename or copy `.env.example` file to `.env` 1.`php artisan key:generate` to gen
 
 #### Order list
 
-![Order list](https://raw.githubusercontent.com/bitboe/laravel-pos-rest/master/screenshots/order_list.png)
+![Order list](https://raw.githubusercontent.com/bitbow/laravel-pos-rest/master/screenshots/order_list.png)
 
 #### Customer list
 
