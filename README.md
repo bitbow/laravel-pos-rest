@@ -39,16 +39,16 @@ Rename or copy `.env.example` file to `.env` 1.`php artisan key:generate` to gen
 ### Install Node Dependencies
 
 1. `npm install` to install node dependencies
-1. `npm run dev` for development or `npm run build` for production
+1. `npm run dev` for development or `npm run build` for production (`npm run build` rebuild Point of sale front in React `resources/js/components/Cart.jsx`) 
 
 ### Create storage link
 
-`php artisan storage:link`
+`php artisan storage:link` for enable storeage images
 
 ### Run Server
 
-1. `php artisan serve` or Laravel Homestead
-1. Visit `localhost:8000` in your browser. Email: `admin@gmail.com`, Password: `admin123`. 
+1. `php artisan serve` or Laravel Homestead or `php artisan serve --host 192.168.100.66 --port 8080` for LAN browser
+1. Visit `localhost:8000` in your browser. Email: `admin@gmail.com+`, Password: `admin123`.
 
 ### Screenshots
 
