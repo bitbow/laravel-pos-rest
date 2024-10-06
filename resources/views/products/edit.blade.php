@@ -37,6 +37,20 @@
             </div>
 
             <div class="form-group">
+                <label for="group">{{ __('product.Group') }}</label>
+                <select name="group" class="form-control @error('group') is-invalid @enderror" id="group">
+                    @foreach ($groups as $group)
+                    <option value="{{$group->id}}" {{$group->id == $product->group ? 'selected' : ''}}>{{$group->name}}</option>
+                    @endforeach
+                </select>
+                @error('group')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>            
+
+            <div class="form-group">
                 <label for="image">{{ __('product.Image') }}</label>
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" name="image" id="image">

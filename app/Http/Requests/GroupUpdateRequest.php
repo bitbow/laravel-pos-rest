@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProductStoreRequest extends FormRequest
+class GroupUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,16 +23,11 @@ class ProductStoreRequest extends FormRequest
      */
     public function rules()
     {
+        $group_id = $this->route('group')->id;
         return [
             'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'group' => 'required|integer',            
             'image' => 'nullable|image',
-            'barcode' => 'required|string|max:50|unique:products',
-            'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
-            'quantity' => 'required|integer',
             'status' => 'required|boolean',
-
         ];
     }
 }
