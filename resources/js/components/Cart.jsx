@@ -9,8 +9,10 @@ class Cart extends Component {
         super(props);
         this.state = {
             cart: [],
+            groups: [],
             products: [],
             customers: [],
+            group_id: "",
             barcode: "",
             search: "",
             customer_id: "",
@@ -23,6 +25,7 @@ class Cart extends Component {
         this.handleChangeQty = this.handleChangeQty.bind(this);
         this.handleEmptyCart = this.handleEmptyCart.bind(this);
 
+        this.loadGroups = this.loadGroups.bind(this);
         this.loadProducts = this.loadProducts.bind(this);
         this.handleChangeSearch = this.handleChangeSearch.bind(this);
         this.handleSeach = this.handleSeach.bind(this);
@@ -33,8 +36,9 @@ class Cart extends Component {
 
     componentDidMount() {
         // load user cart
-        this.loadTranslations();
+        this.loadTranslations();        
         this.loadCart();
+        this.loadGroups();
         this.loadProducts();
         this.loadCustomers();
     }
@@ -56,8 +60,26 @@ class Cart extends Component {
         });
     }
 
+    loadGroups() {
+        axios.get(`/admin/groups`).then((res) => {
+            const groups = res.data.data;
+            this.setState({ groups });
+        });
+    }    
+
     loadProducts(search = "") {
         const query = !!search ? `?search=${search}` : "";
+        axios.get(`/admin/products${query}`).then((res) => {
+            const products = res.data.data;
+            this.setState({ products });
+        });
+    }
+
+    loadProductsSetGroup(group = "1") {
+        const query = `?group=${group}`;
+
+        console.log(query);
+
         axios.get(`/admin/products${query}`).then((res) => {
             const products = res.data.data;
             this.setState({ products });
@@ -138,6 +160,10 @@ class Cart extends Component {
         }
     }
 
+    setGroupId(group) {
+        this.loadProductsSetGroup(group);
+    }   
+
     addProductToCart(barcode) {
         let product = this.state.products.find((p) => p.barcode === barcode);
         if (!!product) {
@@ -217,7 +243,7 @@ class Cart extends Component {
         });
     }
     render() {
-        const { cart, products, customers, barcode, translations} = this.state;
+        const { cart, groups, products, customers, barcode, translations} = this.state;
         return (
             <div className="row">
                 <div className="col-md-6 col-lg-4">
@@ -328,7 +354,21 @@ class Cart extends Component {
                     </div>
                 </div>
                 <div className="col-md-6 col-lg-8">
-                    <div className="mb-2">
+                    <div className="order-product">
+                    {groups.map((g) => (
+                            <div
+                            onClick={() => this.setGroupId(g.id)}
+                                key={g.id}
+                                className="item"
+                            >
+                                <img src={g.image_url} alt="" />
+                                <h5>
+                                    {g.name}
+                                </h5>
+                            </div>
+                        ))}                        
+                    </div>                                        
+                    <div className="search-input">
                         <input
                             type="text"
                             className="form-control"
@@ -352,7 +392,7 @@ class Cart extends Component {
                                             : {}
                                     }
                                 >
-                                    {p.name}({p.quantity})
+                                    {p.name} {/* (p.quantity) */}
                                 </h5>
                             </div>
                         ))}

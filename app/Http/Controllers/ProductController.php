@@ -6,6 +6,7 @@ use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
+use App\Models\Group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,16 +20,28 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $products = Product::query();
+        $groups = Group::query();
 
-        $products->when($request->search, function ($query, $search) {
-            $query->where('name', 'LIKE', "%{$search}%");
-        });
+
+        if($request->search){
+            $products->when($request->search, function ($query, $search) {
+                $query->where('name', 'LIKE', "%{$search}%");
+            });
+        }
+
+        if($request->group){
+            $products->when($request->group, function ($query, $group) {
+                $query->where('group', 'LIKE', "%{$group}%");
+            });
+        }        
 
         $products = $products->latest()->paginate(10);
 
+        // $groups = Group::query();
+
         if (request()->wantsJson()) {
             return ProductResource::collection($products);
-        }
+        }        
         return view('products.index')->with('products', $products);
     }
 
@@ -39,7 +52,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $groups = Group::all();        
+        return view('products.create')->with('groups', $groups);
     }
 
     /**
@@ -59,12 +73,19 @@ class ProductController extends Controller
         $product = Product::create([
             'name' => $request->name,
             'description' => $request->description,
+            'group' => $request->group,
             'image' => $image_path,
             'barcode' => $request->barcode,
             'price' => $request->price,
             'quantity' => $request->quantity,
             'status' => $request->status
         ]);
+        /*    
+        $group = Group::create([
+            'name' => $request->name,
+            'status' => $request->status
+        ]);
+        */
 
         if (!$product) {
             return redirect()->back()->with('error', __('product.error_creating'));
@@ -91,7 +112,11 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('products.edit')->with('product', $product);
+        $groups = Group::all();
+        // $group = $product->group;
+        // $groups = Group::where('id', $group)->first();
+
+        return view('products.edit')->with('product', $product)->with('groups', $groups);
     }
 
     /**
@@ -105,6 +130,7 @@ class ProductController extends Controller
     {
         $product->name = $request->name;
         $product->description = $request->description;
+        $product->group = $request->group;        
         $product->barcode = $request->barcode;
         $product->price = $request->price;
         $product->quantity = $request->quantity;
