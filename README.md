@@ -55,18 +55,18 @@ Rename or copy `.env.example` file to `.env` 1.`php artisan key:generate` to gen
 
 #### Product list
 
-![Product list](https://raw.githubusercontent.com/angkosal/laravel-pos/master/screenshots/products_list.png)
+![Product list](https://raw.githubusercontent.com/bitbow/laravel-pos-rest/master/screenshots/products_list.png)
 
 #### Create order
 
-![Create order](https://raw.githubusercontent.com/angkosal/laravel-pos/master/screenshots/pos.png)
+![Create order](https://raw.githubusercontent.com/bitbow/laravel-pos-rest/master/screenshots/pos.png)
 
 #### Order list
 
-![Order list](https://raw.githubusercontent.com/angkosal/laravel-pos/master/screenshots/order_list.png)
+![Order list](https://raw.githubusercontent.com/bitboe/laravel-pos-rest/master/screenshots/order_list.png)
 
 #### Customer list
 
-![Customer list](https://raw.githubusercontent.com/angkosal/laravel-pos/master/screenshots/customer_list.png)
+![Customer list](https://raw.githubusercontent.com/bitbow/laravel-pos-rest/master/screenshots/customer_list.png)
 
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/angkosal)
+
